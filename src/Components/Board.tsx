@@ -113,13 +113,7 @@ function Board({ toDos, boardId, boardIndex }: IBoardProps) {
     });
     setValue("toDo", "");
   };
-  const onFocusClick = (event: React.FocusEvent<HTMLInputElement>) => {
-    setTimeout(() => {
-      event.target.blur();
-    }, 3000);
-  };
-
-  localStorage.setItem(USERTODOLIST_KEY, JSON.stringify(toDosa));
+  localStorage.setItem(USERTODOLIST_KEY, JSON.stringify(toDos));
   //console.log(JSON.parse("asdf"));
   return (
     <Draggable draggableId={boardId} index={boardIndex}>
@@ -138,7 +132,6 @@ function Board({ toDos, boardId, boardIndex }: IBoardProps) {
           </TitleDiv>
           <Form onSubmit={handleSubmit(onVaild)}>
             <Input
-              onFocus={onFocusClick}
               {...register("toDo", { required: true })}
               placeholder={`Add task a ${boardId}`}
               type="text"

@@ -1,12 +1,11 @@
 import React from "react";
-import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
-import { Helmet } from "react-helmet";
-import { useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+import { useRecoilState } from "recoil";
 import { ItoDoStateProps, toDoState, USERTODOLIST_KEY } from "./atoms";
 import Board from "./Components/Board";
 import CreateBoard from "./Components/CreateBoard";
+import { Helmet } from "react-helmet";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,7 +29,6 @@ const Boards = styled.div`
 
 function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
-  const { register, handleSubmit, setValue } = useForm();
   const onDragEnd = (info: DropResult) => {
     console.log(info);
     const { type, destination, source } = info;
@@ -128,6 +126,7 @@ function App() {
       });
     }
   };
+  localStorage.setItem(USERTODOLIST_KEY, JSON.stringify(toDos));
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
