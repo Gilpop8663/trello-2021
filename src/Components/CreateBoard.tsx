@@ -49,7 +49,6 @@ function CreateBoard() {
     //console.log(localStorage.getItem(USERTODOLIST_KEY));
     setValue("board", "");
   };
-  localStorage.setItem(USERTODOLIST_KEY, JSON.stringify(toDos));
   return (
     <Wraaper>
       <Form onSubmit={handleSubmit<IAddBoard>(onVaild)}>

@@ -113,7 +113,6 @@ function Board({ toDos, boardId, boardIndex }: IBoardProps) {
     });
     setValue("toDo", "");
   };
-  localStorage.setItem(USERTODOLIST_KEY, JSON.stringify(toDos));
   //console.log(JSON.parse("asdf"));
   return (
     <Draggable draggableId={boardId} index={boardIndex}>
