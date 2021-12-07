@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ItoDoStateProps, toDoState, USERTODOLIST_KEY } from "./atoms";
 import Board from "./Components/Board";
+import CreateBoard from "./Components/CreateBoard";
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,24 +27,6 @@ const Boards = styled.div`
   gap: 10px;
   width: 100%;
 `;
-
-const Form = styled.form`
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  background-color: ${(props) => props.theme.boardColor};
-  padding: 20px 10px;
-  margin-left: 20px;
-  margin-top: 20px;
-  border-radius: 20px;
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-`;
-
-const Input = styled.input`
-  text-align: center;
-`;
-
-const Button = styled.button``;
 
 function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
@@ -146,72 +129,39 @@ function App() {
     }
   };
 
-  interface IAddBoard {
-    board: string;
-  }
-
-  const onVaild = ({ board }: IAddBoard) => {
-    //console.log(board);
-    const newBoard = { [board]: [] };
-    //console.log(newBoard);
-    setToDos((allBoards) => {
-      return { ...allBoards, ...newBoard };
-    });
-    //console.log(localStorage.getItem(USERTODOLIST_KEY));
-    setValue("board", "");
-  };
-
-  const onFocusClick = (event: React.FocusEvent<HTMLInputElement>) => {
-    setTimeout(() => {
-      event.target.blur();
-    }, 3000);
-  };
-  localStorage.setItem(USERTODOLIST_KEY, JSON.stringify(toDos));
   return (
-    <>
+    <DragDropContext onDragEnd={onDragEnd}>
       <Helmet>
-        <script
-          src="https://kit.fontawesome.com/5951a7bf3c.js"
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
           crossOrigin="anonymous"
-        ></script>
+        ></link>
       </Helmet>
-      <Form onSubmit={handleSubmit<IAddBoard>(onVaild)}>
-        <Input
-          {...register("board", {
-            required: true,
-            maxLength: 20,
-          })}
-          type="text"
-          placeholder="Add a Board"
-          maxLength={20}
-          onFocus={onFocusClick}
-        />
-        <Button>Add Board</Button>
-      </Form>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Wrapper>
-          <Droppable
-            droppableId="droppableBoards"
-            type="board"
-            direction="horizontal"
-          >
-            {(magic) => (
-              <Boards ref={magic.innerRef} {...magic.droppableProps}>
-                {Object.keys(toDos).map((boardId, index) => (
-                  <Board
-                    key={boardId}
-                    boardId={boardId}
-                    toDos={toDos[boardId]}
-                    boardIndex={index}
-                  />
-                ))}
-                {magic.placeholder}
-              </Boards>
-            )}
-          </Droppable>
-        </Wrapper>
-      </DragDropContext>
-    </>
+      <Wrapper>
+        <CreateBoard />
+        <Droppable
+          droppableId="droppableBoards"
+          type="board"
+          direction="horizontal"
+        >
+          {(magic) => (
+            <Boards ref={magic.innerRef} {...magic.droppableProps}>
+              {Object.keys(toDos).map((boardId, index) => (
+                <Board
+                  key={boardId}
+                  boardId={boardId}
+                  toDos={toDos[boardId]}
+                  boardIndex={index}
+                />
+              ))}
+              {magic.placeholder}
+            </Boards>
+          )}
+        </Droppable>
+      </Wrapper>
+    </DragDropContext>
   );
 }
 export default App;
