@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/trello-2021/static/js/main.b47eefff.chunk.js",
-    "main.js.map": "/trello-2021/static/js/main.b47eefff.chunk.js.map",
+    "main.js": "/trello-2021/static/js/main.3cbaa530.chunk.js",
+    "main.js.map": "/trello-2021/static/js/main.3cbaa530.chunk.js.map",
     "runtime-main.js": "/trello-2021/static/js/runtime-main.6dd09eeb.js",
     "runtime-main.js.map": "/trello-2021/static/js/runtime-main.6dd09eeb.js.map",
-    "static/js/2.76466cf6.chunk.js": "/trello-2021/static/js/2.76466cf6.chunk.js",
-    "static/js/2.76466cf6.chunk.js.map": "/trello-2021/static/js/2.76466cf6.chunk.js.map",
+    "static/js/2.3b9c24ec.chunk.js": "/trello-2021/static/js/2.3b9c24ec.chunk.js",
+    "static/js/2.3b9c24ec.chunk.js.map": "/trello-2021/static/js/2.3b9c24ec.chunk.js.map",
     "index.html": "/trello-2021/index.html",
-    "static/js/2.76466cf6.chunk.js.LICENSE.txt": "/trello-2021/static/js/2.76466cf6.chunk.js.LICENSE.txt"
+    "static/js/2.3b9c24ec.chunk.js.LICENSE.txt": "/trello-2021/static/js/2.3b9c24ec.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6dd09eeb.js",
-    "static/js/2.76466cf6.chunk.js",
-    "static/js/main.b47eefff.chunk.js"
+    "static/js/2.3b9c24ec.chunk.js",
+    "static/js/main.3cbaa530.chunk.js"
   ]
 }
