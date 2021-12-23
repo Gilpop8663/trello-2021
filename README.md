@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# 사이트를 만들면서 배우게 된 것
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Hook Form 
+Recoil 의 atoms 와 selectors
+Beautiful DnD
 
-## Available Scripts
+Trello similar site
+이 프로젝트에서는 React Hook Form 을 이용하여 입력폼을 빌드하고 검증하는 것을 배웁니다. 또한 Recoil 의 atoms 와 selectors를 이용해 어플리케이션의 상태를 관리하는 법을 배웁니다. 마지막으로 Beautiful DnD를 활용하여 드래그-앤-드랍을 구현해보게 됩니다.
 
-In the project directory, you can run:
+## 만들면서 어려웠던 점
 
-### `npm start`
+atom을 처음 사용해보았는데 익숙하지 않아서 어려웠고 selecetor 기능을 익히는데 주로 시간을 썼습니다. 그리고 Beautiful DnD 에서 보드를 드래그앤드랍 기능을 구현하는데 매우 어려웠습니다.
+그리고 localstorage를 사용하니 git 배포가 정상적으로 작동되지 않아 해멨습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 만들어 본 후기
 
-### `npm test`
+리스트를 드래그앤드랍으로 정렬할 수 있는 라이브러리를 배웠으니 나중에 어플이나 사이트에 활용하면 좋겠다는 생각을 했습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 스크린샷
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="https://user-images.githubusercontent.com/80146176/147280775-baf213b5-2f76-4bcc-b2ea-ce5287b53d4d.png" width="auto" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 배포 사이트
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://gilpop8663.github.io/trello-2021/
