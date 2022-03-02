@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
-import { ItoDoStateProps, toDoState, USERTODOLIST_KEY } from "./atoms";
+import { ItoDoStateProps, toDoState, USERTODOLIST_KEY } from "./atom/atoms";
 import Board from "./Components/Board";
 import CreateBoard from "./Components/CreateBoard";
 import { Helmet } from "react-helmet";
+import { BOARD, DROPPABLE_BOARDS } from "./constant/constants";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,10 +31,9 @@ const Boards = styled.div`
 function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = (info: DropResult) => {
-    console.log(info);
     const { type, destination, source } = info;
 
-    if (destination === null && type !== "board") {
+    if (destination === null && type !== BOARD) {
       setToDos((allBoards) => {
         const newBoard = [...allBoards[source.droppableId]];
         newBoard.splice(source.index, 1);
@@ -42,19 +42,12 @@ function App() {
     }
 
     if (!destination) return;
-    //console.log(toDos);
 
-    if (type === "board") {
+    if (type === BOARD) {
       if (destination.index === source.index) return;
       setToDos((allBoards) => {
         const keyList = Object.keys(toDos);
-        //console.log(allBoards);
         const newBoards: ItoDoStateProps = {};
-        //console.log(keyList);
-        // keyList.map((item) => {
-        //   console.log(item);
-        //   newBoards[item] = { ...allBoards[item] };
-        // });
         let sourceKey: string, destKey: string;
         keyList.forEach((item, index) => {
           if (index === source.index) sourceKey = item;
@@ -71,22 +64,6 @@ function App() {
             newBoards[sourceKey] = [...allBoards[sourceKey]];
           }
         });
-        //console.log(newBoards);
-        // // keyList.forEach((item) => {
-        // //   //console.log(item);
-        // //   if (item === sourceKey) {
-        // //     newToDos[destKey] = [...allBoards[destKey]];
-        // //     newToDosArr.push((newToDos[destKey] = [...allBoards[destKey]]));
-        // //   } else if (item === destKey) {
-        // //     newToDos[sourceKey] = [...allBoards[sourceKey]];
-        // //     newToDosArr.push((newToDos[sourceKey] = [...allBoards[sourceKey]]));
-        // //   } else {
-        // //     newToDos[item] = [...allBoards[item]];
-        // //     newToDosArr.push((newToDos[item] = [...allBoards[item]]));
-        // //   }
-        // //   console.log({ ...newToDosArr });
-        // //   //console.log(newToDos);
-        // // });
         return newBoards;
       });
       return;
@@ -94,16 +71,13 @@ function App() {
 
     if (
       destination?.droppableId === source.droppableId &&
-      source.droppableId !== "droppableBoards"
+      source.droppableId !== DROPPABLE_BOARDS
     ) {
       setToDos((allBoards) => {
         const newBoard = [...allBoards[source.droppableId]];
-        //console.log(newBoard);
         const taskObj = newBoard[source.index];
-        //console.log(taskObj);
         newBoard.splice(source.index, 1);
         newBoard.splice(destination?.index, 0, taskObj);
-        //console.log(newBoard);
         return { ...allBoards, [source.droppableId]: newBoard };
       });
     }
@@ -115,8 +89,6 @@ function App() {
         const taskObj = removeBoard[source.index];
         removeBoard.splice(source.index, 1);
         newBoard.splice(destination.index, 0, taskObj);
-        //console.log(removeBoard);
-        //console.log(toDos);
 
         return {
           ...allBoards,
@@ -141,8 +113,8 @@ function App() {
       <Wrapper>
         <CreateBoard />
         <Droppable
-          droppableId="droppableBoards"
-          type="board"
+          droppableId={DROPPABLE_BOARDS}
+          type={BOARD}
           direction="horizontal"
         >
           {(magic) => (

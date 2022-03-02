@@ -1,27 +1,57 @@
-# 사이트를 만들면서 배우게 된 것
+## 배포 주소
 
-React Hook Form 
-Recoil 의 atoms 와 selectors
-Beautiful DnD
+## <a href="https://gilpop8663.github.io/trello-2021/">배포 사이트</a>
 
-Trello similar site
-이 프로젝트에서는 React Hook Form 을 이용하여 입력폼을 빌드하고 검증하는 것을 배웁니다. 또한 Recoil 의 atoms 와 selectors를 이용해 어플리케이션의 상태를 관리하는 법을 배웁니다. 마지막으로 Beautiful DnD를 활용하여 드래그-앤-드랍을 구현해보게 됩니다.
+## 💻 설치 방법
 
-## 만들면서 어려웠던 점
+    npm install
+    npm start
 
-atom을 처음 사용해보았는데 익숙하지 않아서 어려웠고 selecetor 기능을 익히는데 주로 시간을 썼습니다. 그리고 Beautiful DnD 에서 보드를 드래그앤드랍 기능을 구현하는데 매우 어려웠습니다.
-그리고 localstorage를 사용하니 git 배포가 정상적으로 작동되지 않아 해멨습니다.
+## 📂 파일 구조
 
+src  
+ ┣ Components  
+ ┃ ┣ Board.tsx  
+ ┃ ┣ CreateBoard.tsx  
+ ┃ ┗ CreateDraggable.tsx  
+ ┣ atom  
+ ┃ ┗ atoms.ts  
+ ┣ constant  
+ ┃ ┗ constants.ts  
+ ┣ styles  
+ ┃ ┣ globalStyle.ts  
+ ┃ ┣ styled.d.ts  
+ ┃ ┗ theme.ts  
+ ┣ App.tsx  
+ ┣ index.tsx  
+ ┗ react-app-env.d.ts
 
-## 만들어 본 후기
+---
 
-리스트를 드래그앤드랍으로 정렬할 수 있는 라이브러리를 배웠으니 나중에 어플이나 사이트에 활용하면 좋겠다는 생각을 했습니다.
+## 📋프로젝트 사진
 
+## 메인 화면
 
-## 스크린샷
+<img src="https://user-images.githubusercontent.com/80146176/147280775-baf213b5-2f76-4bcc-b2ea-ce5287b53d4d.png" alt="로그인창"/>
 
-<img src="https://user-images.githubusercontent.com/80146176/147280775-baf213b5-2f76-4bcc-b2ea-ce5287b53d4d.png" width="auto" />
+---
 
-## 배포 사이트
+## 드래그앤드랍 화면
 
-https://gilpop8663.github.io/trello-2021/
+<img src="https://user-images.githubusercontent.com/80146176/156347792-8ab734b6-ddb8-4153-a05a-c158048a175a.gif" alt="gif파일"/>
+
+---
+
+## 📝 기능
+
+### React Hook Form을 이용하여 입력 폼을 빌드하고 구현
+
+- React Hook Form 을 이용해서 기존의 입력 폼의 입력값을 받을 때 사용되는 코드 양보다 더 적게 적을 수 있었습니다.
+
+### Recoil의 atoms를 이용해 애플리케이션의 상태를 관리
+
+- 저장된 메세지 리스트를 Recoil을 통해 전역으로 관리하였습니다.
+
+### Beautiful DnD를 활용하여 드래그-앤-드롭을 구현
+
+- Beautiful DnD 라이브러리를 사용하여 각 보드마다 드래그-앤-드롭 기능을 구현하였고 드래그 중 보드와 메시지의 색이 변하도록 구현했습니다.

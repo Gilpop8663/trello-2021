@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { toDoState, USERTODOLIST_KEY } from "../atoms";
+import { toDoState } from "../atom/atoms";
+import { BOARD } from "../constant/constants";
 
 const Wraaper = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const Form = styled.form`
 `;
 
 interface IAddBoard {
-  board: string;
+  board?: string;
 }
 
 const Input = styled.input`
@@ -37,23 +38,20 @@ const Input = styled.input`
 const Button = styled.button``;
 
 function CreateBoard() {
-  const [toDos, setToDos] = useRecoilState(toDoState);
+  const setToDos = useSetRecoilState(toDoState);
   const { register, handleSubmit, setValue } = useForm();
-  const onVaild = ({ board }: IAddBoard) => {
-    //console.log(board);
+  const onVaild = ({ board = "" }: IAddBoard) => {
     const newBoard = { [board]: [] };
-    //console.log(newBoard);
     setToDos((allBoards) => {
       return { ...allBoards, ...newBoard };
     });
-    //console.log(localStorage.getItem(USERTODOLIST_KEY));
-    setValue("board", "");
+    setValue(BOARD, "");
   };
   return (
     <Wraaper>
       <Form onSubmit={handleSubmit<IAddBoard>(onVaild)}>
         <Input
-          {...register("board", {
+          {...register(BOARD, {
             required: true,
             maxLength: 20,
           })}

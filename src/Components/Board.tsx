@@ -1,15 +1,16 @@
 import React from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { IToDoProps, toDoState, USERTODOLIST_KEY } from "../atoms";
+import { IToDoProps, toDoState } from "../atom/atoms";
+import { TODO } from "../constant/constants";
 import CreateDraggable from "./CreateDraggable";
 
 const Wrapper = styled.div<{ isDragging: boolean }>`
   padding: 10px 0px;
   background-color: ${(props) =>
-    props.isDragging ? "#FCD1D1" : props.theme.boardColor};
+    props.isDragging ? props.theme.pinkColor : props.theme.boardColor};
   width: 300px;
   border-radius: 5px;
   min-height: 300px;
@@ -65,7 +66,7 @@ const Button = styled.button`
 const Area = styled.div<IAreaProps>`
   background-color: ${(props) =>
     props.isDraggingOver
-      ? "#FCD1D1"
+      ? props.theme.pinkColor
       : props.draggingFromThisWith
       ? "#D3E0DC"
       : "#ECE2E1"};
@@ -90,30 +91,21 @@ interface IFormProps {
 
 function Board({ toDos, boardId, boardIndex }: IBoardProps) {
   const { register, setValue, handleSubmit } = useForm<IFormProps>();
-  const toDosa = useRecoilValue(toDoState);
-  const SetToDos = useSetRecoilState(toDoState);
+  const setToDos = useSetRecoilState(toDoState);
   const onClick = (event: React.FormEvent<HTMLButtonElement>) => {
-    //console.log(event);
-    //console.log(toDos);
-    //console.log(boardId);
-    //console.log(toDosa);
-    SetToDos((allboards) => {
+    setToDos((allboards) => {
       const newBoards = { ...allboards };
       delete newBoards[boardId];
-      //console.log(boardId.toString());
-      //console.log(newBoards);
       return newBoards;
     });
   };
   const onVaild = ({ toDo }: IFormProps) => {
-    //console.log(toDo);
     const newToDos = { id: Date.now(), text: toDo };
-    SetToDos((allBoards) => {
+    setToDos((allBoards) => {
       return { ...allBoards, [boardId]: [newToDos, ...allBoards[boardId]] };
     });
-    setValue("toDo", "");
+    setValue(TODO, "");
   };
-  //console.log(JSON.parse("asdf"));
   return (
     <Draggable draggableId={boardId} index={boardIndex}>
       {(magic, snapshot) => (
@@ -131,7 +123,7 @@ function Board({ toDos, boardId, boardIndex }: IBoardProps) {
           </TitleDiv>
           <Form onSubmit={handleSubmit(onVaild)}>
             <Input
-              {...register("toDo", { required: true })}
+              {...register(TODO, { required: true })}
               placeholder={`Add task a ${boardId}`}
               type="text"
             />

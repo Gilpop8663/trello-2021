@@ -23,7 +23,6 @@ interface IDraggableProps {
 }
 
 function CreateDraggable({ toDoId, toDoText, index }: IDraggableProps) {
-  //console.log(toDo, "has been rendered");
   return (
     <Draggable draggableId={toDoId + ""} index={index}>
       {(magic, snapshot) => (
